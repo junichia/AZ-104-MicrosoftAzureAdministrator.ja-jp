@@ -42,9 +42,9 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
 1. [Azure Active Directory] ブレードで、**[管理]** セクションまでスクロールダウンし、**[ユーザー設定]** をクリックして、使用可能な構成オプションを確認します。
 
-1. [Azure Active Directory] ブレードの **[管理]** セクションで **[ユーザー]** をクリックし、ユーザー アカウントをクリックして **[プロファイル]** の設定を表示します。 
+1. [Azure Active Directory] ブレードの **[管理]** セクションで **[ユーザー]** をクリックし、ユーザー アカウントをクリックして **[プロパティ]** の設定を表示します。 
 
-1. **[編集]** をクリックし、**[設定]** セクションで **[利用場所]** を **[米国]** に設定し、**[保存]** をクリックして、変更を適用します。
+1. **[編集（鉛筆のマーク）]** をクリックし、**[設定]** セクションで **[利用場所]** を **[米国]** に設定し、**[保存]** をクリックして、変更を適用します。
 
     >**注**:これは、このラボの後半で Azure AD Premium P2 ライセンスをユーザー アカウントに割り当てるために必要です。
 
@@ -175,11 +175,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
 1. **[メンバーの追加]** ブレードで、**[IT クラウド管理者]** グループと **[IT システム管理者]** グループを見つけて選択し、**[新しいグループ]** ブレードに戻って **[作成]** をクリックします。
 
-1. テスト ユーザー アカウントを使用してテスト Azure AD テナントを作成し、Contoso Azure サブスクリプションのリソースに対する制限付きアクセス許可をそのアカウントに付与する必要もあります。
-
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You might experience delays with updates of the dynamic membership groups. To expedite the update, navigate to the group blade, display its <bpt id="p1">**</bpt>Dynamic membership rules<ept id="p1">**</ept> blade, <bpt id="p2">**</bpt>Edit<ept id="p2">**</ept> the rule listed in the <bpt id="p3">**</bpt>Rule syntax<ept id="p3">**</ept> textbox by adding a whitespace at the end, and <bpt id="p4">**</bpt>Save<ept id="p4">**</ept> the change.
-
-1. Navigate back to the <bpt id="p1">**</bpt>Groups - All groups<ept id="p1">**</ept> blade, click the entry representing the <bpt id="p2">**</bpt>IT System Administrators<ept id="p2">**</ept> group and, on then display its <bpt id="p3">**</bpt>Members<ept id="p3">**</ept> blade. Verify that the <bpt id="p1">**</bpt>az104-01a-aaduser2<ept id="p1">**</ept> appears in the list of group members.
+1. ** すべてのグループ** に戻り、**IT System Administrators** を開き、**メンバー** ブレード をクリックします。メンバーに、**az104-01a-aaduser2** が含まれていることを確認します。（表示されるまでに時間がかかるので、次のステップに進んでください。）
 
 #### <a name="task-3-create-an-azure-active-directory-ad-tenant-optional---lab-environment-issue"></a>タスク 3:Azure Active Directory (AD) テナントを作成する (オプション - ラボ環境の問題)
 
