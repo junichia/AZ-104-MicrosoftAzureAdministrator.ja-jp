@@ -9,9 +9,9 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-You were tasked with testing managing network traffic targeting Azure virtual machines in the hub and spoke network topology, which Contoso considers implementing in its Azure environment (instead of creating the mesh topology, which you tested in the previous lab). This testing needs to include implementing connectivity between spokes by relying on user defined routes that force traffic to flow via the hub, as well as traffic distribution across virtual machines by using layer 4 and layer 7 load balancers. For this purpose, you intend to use Azure Load Balancer (layer 4) and Azure Application Gateway (layer 7).
+あなたは、Contoso が Azure 環境への実装を検討しているハブ＆スポーク ネットワーク トポロジーの Azure 仮想マシンを対象としたネットワーク トラフィック管理のテストを課せられました（前のラボでテストしたメッシュ トポロジーの作成ではありません）。このテストでは、トラフィックがハブを経由するように強制するユーザー定義のルートに依存してスポーク間の接続を実装し、レイヤー 4 およびレイヤー 7 のロードバランサーを使用して仮想マシン間でトラフィックを分散させる必要があります。この目的のために、Azure Load Balancer (レイヤー 4) と Azure Application Gateway (レイヤー 7) を使用する予定です。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This lab, by default, requires total of 8 vCPUs available in the Standard_Dsv3 series in the region you choose for deployment, since it involves deployment of four Azure VMs of Standard_D2s_v3 SKU. If your students are using trial accounts, with the limit of 4 vCPUs, you can use a VM size that requires only one vCPU (such as Standard_B1s).
+>このラボでは、Standard_D2s_v3 SKU の 4 つの Azure VM を展開するため、デフォルトでは、展開用に選択した地域の Standard_Dsv3 シリーズで利用可能な合計 8 つの vCPU が必要です。学生がトライアルアカウントを使用していて、4 vCPU の制限がある場合、1 vCPU しか必要としない VM サイズ (Standard_B1s など) を使用することができます。
 
 ## <a name="objectives"></a>目標
 
@@ -37,7 +37,7 @@ You were tasked with testing managing network traffic targeting Azure virtual ma
 
 #### <a name="task-1-provision-the-lab-environment"></a>タスク 1:ラボ環境をプロビジョニングする
 
-In this task, you will deploy four virtual machines into the same Azure region. The first two will reside in a hub virtual network, while each of the remaining two will reside in a separate spoke virtual network.
+このタスクでは、同じ Azure リージョンに 4 つの仮想マシンを展開します。最初の2台はハブ仮想ネットワークに、残りの2台はそれぞれ別のスポーク仮想ネットワークに常駐します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -49,7 +49,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. [Cloud Shell] ペインのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** をクリックして、ファイル **\\Allfiles\\Labs\\06\\az104-06-vms-loop-template.json** と **\\Allfiles\\Labs\\06\\az104-06-vms-loop-parameters.json** を Cloud Shell のホーム ディレクトリにアップロードします。
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+> 先ほどアップロードしたParametersファイルを編集し、パスワードを変更します。Cloud Shell でのファイル編集にヘルプが必要な場合は、インストラクターに相談してください。ベストプラクティスとして、パスワードのような秘密は、Key Vaultにより安全に保管されるべきです。
 
 1. [Cloud Shell] ペインから次を実行して、ラボ環境をホストする最初のリソース グループを作成します (`[Azure_region]` プレースホルダーを、Azure Virtual Machines をデプロイする Azure リージョンの名前に置き換えます)("(Get-AzLocation).Location" コマンドレットを使用して、リージョン一覧を取得できます)。
 
@@ -77,7 +77,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
       -TemplateParameterFile $HOME/az104-06-vms-loop-parameters.json
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete before proceeding to the next step. This should take about 5 minutes.
+    >次のステップに進む前に、デプロイメントが完了するのを待ちます。これは約5分かかるはずです。
 
     >**注**:VM サイズが利用できないというエラーが発生した場合、インストラクターにサポートを依頼し、次の手順を試してください。
     > 1. CloudShell で `{}` ボタンをクリックし、左側のバーから **az104-06-vms-loop-parameters.json** を選択して、`vmSize` パラメーターの値をメモしておきます。
@@ -105,7 +105,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
    }
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete before proceeding to the next step. This should take about 5 minutes.
+    >次のステップに進む前に、デプロイメントが完了するのを待ちます。これには5分ほどかかるはずです。
 
 
 
@@ -146,15 +146,15 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 設定 | 値 |
     | --- | --- |
     | この仮想ネットワーク: ピアリング リンク名 | **az104-06-vnet01_to_az104-06-vnet2** |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
     | 仮想ネットワーク ゲートウェイ | **なし (既定値)** |
     | リモート仮想ネットワーク: ピアリング リンク名 | **az104-06-vnet2_to_az104-06-vnet01** |
     | 仮想ネットワークのデプロイ モデル | **リソース マネージャー** |
     | リソース ID を知っている | enabled |
     | Resource ID | このタスクの前半で記録した **az104-06-vnet2** の resourceID パラメーターの値 |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **許可 (既定)** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **許可 (既定)** |
     | 仮想ネットワーク ゲートウェイ | **なし (既定値)** |
 
     >**注**: 操作が完了するまで待ちます。
@@ -170,15 +170,15 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 設定 | 値 |
     | --- | --- |
     | この仮想ネットワーク: ピアリング リンク名 | **az104-06-vnet01_to_az104-06-vnet3** |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
     | 仮想ネットワーク ゲートウェイ | **なし (既定値)** |
     | リモート仮想ネットワーク: ピアリング リンク名 | **az104-06-vnet3_to_az104-06-vnet01** |
     | 仮想ネットワークのデプロイ モデル | **リソース マネージャー** |
     | リソース ID を知っている | enabled |
     | Resource ID | このタスクの前半で記録した **az104-06-vnet3** の resourceID パラメーターの値 |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **許可 (既定)** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **許可 (既定)** |
     | 仮想ネットワーク ゲートウェイ | **なし (既定値)** |
 
     >**注**:このラボでは、デフォルトで、Standard_D2s_v3 SKU の Azure VM のデプロイが 4 つ含まれるため、デプロイ用に選択したリージョンの Standard_Dsv3 シリーズで使用可能な vCPU が合計 8 個必要です。
@@ -229,7 +229,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
     > **注**:**10.63.0.4** は、プライベート IP アドレス **az104-06-vm3** を表します。
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Verify that the status is <bpt id="p1">**</bpt>Reachable<ept id="p1">**</ept>. Review the network path and note that the connection was direct, with no intermediate hops in between the VMs.
+1. Check をクリックし、接続性チェックの結果が返されるまで待ちます。ステータスが Reachable であることを確認します。ネットワークパスを確認し、VM 間に中間ホップがなく、直接接続されていることを確認します。
 
     > **注**:ハブバーチャル ネットワークは 2 番目のスポークバーチャル ネットワークと直接ピアリングされるため、これは予期されます。
 
@@ -246,7 +246,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | Protocol | **TCP** |
     | 宛先ポート | **3389** |
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Note that the status is <bpt id="p1">**</bpt>Unreachable<ept id="p1">**</ept>.
+1. Check をクリックし、接続性チェックの結果が返されるまで待ちます。ステータスが「Unreachable」であることに注意してください。
 
     > **注**:これは、2 つのスポークバーチャル ネットワークが互いにピアリングされないので、予想されます (バーチャル ネットワーク ピアリングは推移的ではありません)。
 
@@ -308,10 +308,10 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 名前 | **az104-06-rt23** |
     | ゲートウェイのルートを伝達する | **No** |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and click <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> to submit your deployment.
+1. **レビューと作成** をクリックします。検証を行い、**作成**をクリックしてデプロイメントを送信します。
 
-   > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the route table to be created. This should take about 3 minutes.
-
+   > ルートテーブルが作成されるまで待ちます。3分ほどかかります。
+   
 1. **[リソースに移動]** をクリックします。
 
 1. **[az104-06-rt23]** ルート テーブル ウィンドウの **[設定]** セクションで、**[ルート]** をクリックしてから **[+ 追加]** をクリックします。
@@ -351,9 +351,9 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | 名前 | **az104-06-rt32** |
     | ゲートウェイのルートを伝達する | **No** |
 
-1. Click Review and Create. Let validation occur, and hit Create to submit your deployment.
+1. **レビューと作成** をクリックします。検証を行い、**作成** をクリックしてデプロイメントを送信します。
 
-   > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the route table to be created. This should take about 3 minutes.
+   >  ルートテーブルが作成されるまで待ちます。これには約3分かかります。
 
 1. **[リソースに移動]** をクリックします。
 
@@ -397,7 +397,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | Protocol | **TCP** |
     | 宛先ポート | **3389** |
 
-1. Click <bpt id="p1">**</bpt>Check<ept id="p1">**</ept> and wait until results of the connectivity check are returned. Verify that the status is <bpt id="p1">**</bpt>Reachable<ept id="p1">**</ept>. Review the network path and note that the traffic was routed via <bpt id="p1">**</bpt>10.60.0.4<ept id="p1">**</ept>, assigned to the <bpt id="p2">**</bpt>az104-06-nic0<ept id="p2">**</ept> network adapter. If status is <bpt id="p1">**</bpt>Unreachable<ept id="p1">**</ept>, you should stop and then start az104-06-vm0.
+1. **Check** をクリックし、接続性チェックの結果が返されるまで待ちます。ステータスが [Reachable] であることを確認します。ネットワークパスを確認し、トラフィックが az104-06-nic0 ネットワークアダプターに割り当てられた 10.60.0.4 を経由してルーティングされていることに注意してください。ステータスが Unreachable の場合、az104-06-vm0を停止してから起動する必要があります。
 
     > **注**:これは想定どおりの結果です。スポークバーチャル ネットワーク間のトラフィックは、ルーターとして機能するハブバーチャル ネットワークにある仮想マシンを経由してルーティングされるためです。
 
@@ -428,9 +428,9 @@ In this task, you will deploy four virtual machines into the same Azure region. 
     | パブリック IP アドレス | **新規作成** |
     | パブリック IP アドレス名 | **az104-06-pip4** |
 
-1. Click <bpt id="p1">**</bpt>Review and Create<ept id="p1">**</ept>. Let validation occur, and hit <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> to submit your deployment.
+1. **レビューと作成** をクリックします。検証を行い、[作成] をクリックしてデプロイメントを送信します。
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Azure load balancer to be provisioned. This should take about 2 minutes.
+    > Azure ロードバランサーがプロビジョニングされるのを待ちます。2分程度かかるはずです。
 
 1. デプロイ ウィンドウで **[リソースに移動]** をクリックします。
 
@@ -514,7 +514,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. **[保存]**
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This subnet will be used by the Azure Application Gateway instances, which you will deploy later in this task. The Application Gateway requires a dedicated subnet of /27 or larger size.
+    > このサブネットは、このタスクの後半でデプロイする Azure Application Gateway インスタンスで使用されます。Application Gateway には、/27 以上のサイズの専用サブネットが必要です。.
 
 1. Azure portal で「**アプリケーション ゲートウェイ**」を検索して選択し、**[アプリケーション ゲートウェイ]** ウィンドウで **[+ 作成]** をクリックします。
 
@@ -589,7 +589,7 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 1. **[次へ: タグ >]** をクリックし、 **[次へ: 確認と作成 >]** 、 **[作成]** の順にクリックします。
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Application Gateway instance to be created. This might take about 8 minutes.
+    > Application Gateway インスタンスが作成されるのを待ちます。これには約8分かかる場合があります。
 
 1. Azure portal で「**アプリケーション ゲートウェイ**」を検索して選択し、**[アプリケーション ゲートウェイ]** ウィンドウで **az104-06-appgw5** をクリックします。
 
@@ -607,9 +607,9 @@ In this task, you will deploy four virtual machines into the same Azure region. 
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> 新しく作成された Azure リソースのうち、使用しないものを削除することを忘れないでください。未使用のリソースを削除することで、予期せぬ請求が発生することはありません。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>ラボのリソースがすぐに削除できない場合でも心配しないでください。リソースには依存関係があり、削除に時間がかかることがあります。リソースの使用状況を監視するのは一般的な管理者の作業なので、ポータルで定期的にリソースを確認して、クリーンアップがどのように進んでいるかを確認すればよいのです。
 
 1. Azure portal で、**[Cloud Shell]** ペイン内に **PowerShell** セッションを開きます。
 
