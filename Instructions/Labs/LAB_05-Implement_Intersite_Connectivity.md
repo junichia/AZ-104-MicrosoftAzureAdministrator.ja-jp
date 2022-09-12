@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-Contoso has its datacenters in Boston, New York, and Seattle offices connected via a mesh wide-area network links, with full connectivity between them. You need to implement a lab environment that will reflect the topology of the Contoso's on-premises networks and verify its functionality.
+Contosoは、ボストン、ニューヨーク、シアトルの各オフィスにあるデータセンターをメッシュ型の広域ネットワークリンクで接続し、その間を完全な形で結んでいます。Contoso のオンプレミス ネットワークのトポロジーを反映するラボ環境を実装し、その機能を検証する必要があります。
 
 ## <a name="objectives"></a>目標
 
@@ -41,9 +41,12 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 1. [Cloud Shell] ペインのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** をクリックして、ファイル **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-template.json** と **\\Allfiles\\Labs\\05\\az104-05-vnetvm-loop-parameters.json** を Cloud Shell のホーム ディレクトリにアップロードします。
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+>先ほどアップロードした Parameters ファイルを編集し、パスワードを変更します。Cloud Shell でファイルを編集するのに手助けが必要な場合は、インストラクターに相談してください。ベストプラクティスとして、パスワードのようなシークレットは、Key Vault により安全に保管されるべきです。
 
-1. From the Cloud Shell pane, run the following to create the resource group that will be hosting the lab environment. The first two virtual networks and a pair of virtual machines will be deployed in [Azure_region_1]. The third virtual network and the third virtual machine will be deployed in the same resource group but another [Azure_region_2]. (replace the [Azure_region_1] and [Azure_region_2] placeholder, including the square brackets, with the names of two different Azure regions where you intend to deploy these Azure virtual machines. An example is $location1 = 'eastus'. You can use Get-AzLocation to list all locations.):
+1. Cloud Shell ペインから以下を実行し、ラボ環境をホストするリソース グループを作成します。最初の 2 つの仮想ネットワークと仮想マシンを location1 にデプロイします。3 つ目の仮想ネットワークと 3 つ目の仮想マシンは、同じリソースグループ内の別の location2 に配置されます。
+
+> [location1] と [location2] は、必要に応じて置き換えてください。Get-AzLocation を使用すると、すべてのロケーションを一覧表示できます)。
+
 
    ```powershell
    $location1 = 'eastus'
@@ -55,7 +58,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
    New-AzResourceGroup -Name $rgName -Location $location1
    ```
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The regions used above were tested and known to work when this lab was last officially reviewed. If you would prefer to use different locations, or they no longer work, you will need to identify two different regions that Standard D2Sv3 virtual machines can be deployed into.
+   >上記で使用した地域は、このラボが最後に公式にレビューされたときにテストされ、動作することが確認されています。別の場所を使用したい場合、または動作しなくなった場合は、Standard D2Sv3 仮想マシンをデプロイできる 2 つの異なる地域を特定する必要があります。
    >
    >Azure リージョンを識別するには、Cloud Shell の PowerShell セッションから **(Get-AzLocation).Location** を実行します。
    >
@@ -63,7 +66,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
    >
    >```az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name" ```
    >
-   >If the command returns no results, then you need to choose another region. Once you have identified two suitable regions, you can adjust the regions in the code block above.
+   >コマンドが結果を返さない場合、別の地域を選択する必要があります。2つの適切なリージョンを特定したら、上記のコードブロックでリージョンを調整することができます。
 
 1. [Cloud Shell] ウィンドウで、次のコマンドを実行して 3 つのバーチャル ネットワークを作成し、アップロードしたテンプレートとパラメーター ファイルを使用して仮想マシンをデプロイします。
 
@@ -107,8 +110,8 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
     | リソース ID を知っている | 未選択 |
     | サブスクリプション | このラボで使用している Azure サブスクリプションの名前 |
     | 仮想ネットワーク | **az104-05-vnet1** |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
     | 仮想ネットワーク ゲートウェイ | **なし** |
 
     >**注**:この手順では、az104-05-vnet0 から az104-05-vnet1、az104-05-vnet1 から az104-05-vnet0 までの 2 つのローカル ピアリングを確立します。
@@ -142,8 +145,8 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
     | リソース ID を知っている | 未選択 |
     | サブスクリプション | このラボで使用している Azure サブスクリプションの名前 |
     | 仮想ネットワーク | **az104-05-vnet2** |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
     | 仮想ネットワーク ゲートウェイ | **なし** |
 
     >**注**:このステップでは、az104-05-vnet0 から az104-05-vnet2、az104-05-vnet2 から az104-05-vnet0 までの 2 つのグローバル ピアリングを確立します。
@@ -179,8 +182,8 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
     | リソース ID を知っている | 未選択 |
     | サブスクリプション | このラボで使用している Azure サブスクリプションの名前 |
     | 仮想ネットワーク | **az104-05-vnet2** |
-    | [Traffic to remote virtual network](リモート仮想ネットワークへのトラフィック) | **許可 (既定)** |
-    | [Traffic forwarded from remote virtual network](リモート仮想ネットワークから転送されるトラフィック) | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
+    | リモート仮想ネットワークへのトラフィック | **許可 (既定)** |
+    | リモート仮想ネットワークから転送されるトラフィック | **この仮想ネットワークの外部から発信されるトラフィックをブロックする** |
     | 仮想ネットワーク ゲートウェイ | **なし** |
 
     >**注**:このステップでは、az104-05-vnet1 から az104-05-vnet2、az104-05-vnet2 から az104-05-vnet1 までの 2 つのグローバル ピアリングを確立します。
@@ -239,7 +242,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 1. **az104-05-vm1** ブレードで、 **[接続]** をクリックし、ドロップダウン メニューで **[RDP]** をクリックし、 **[RDP を使用して接続する]** ブレードで **[RDP ファイルのダウンロード]** をクリックし、プロンプトに従ってリモート デスクトップ セッションを開始します。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    >この手順は、Windowsコンピュータからリモートデスクトップを使用して接続する場合です。Mac では、Mac App Store から Remote Desktop Client を、Linux コンピュータでは、オープンソースの RDP クライアントソフトウェアを使用することができます。
 
     >**注**:ターゲット仮想マシンに接続する際は、警告メッセージを無視できます。
 
@@ -259,9 +262,9 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> 新しく作成されたAzureリソースで、もう使用しないものは忘れずに削除してください。未使用のリソースを削除することで、予期せぬ請求が発生することはありません。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+>ラボのリソースがすぐに削除できなくても心配しないでください。リソースに依存関係があり、削除に時間がかかる場合もあります。リソースの使用状況を監視するのは一般的な管理者の仕事ですので、ポータルで定期的にリソースを確認し、クリーンアップがどのように進んでいるかを確認するだけです。
 
 1. Azure portal で、**[Cloud Shell]** ペイン内に **PowerShell** セッションを開きます。
 
@@ -277,7 +280,7 @@ Contoso has its datacenters in Boston, New York, and Seattle offices connected v
    Get-AzResourceGroup -Name 'az104-05*' | Remove-AzResourceGroup -Force -AsJob
    ```
 
-    >**注**:このコマンドは非同期で実行されるため (-AsJob パラメーターによって決定されます)、同じ PowerShell セッション内で直後に別の PowerShell コマンドを実行できますが、リソース グループが実際に削除されるまでに数分かかります。
+    >**注**:このコマンドは非同期で実行されるため (-AsJob パラメーターによって決定されます)、同じ PowerShell セッション内で直後に別の PowerShell コマンドを実行できますが、リソース グループが実際に削除されるまでに数分かかります。ラボのリソースがすぐに削除できなくても心配しないでください。リソースには依存関係があり、削除に時間がかかることがあります。リソースの使用状況を監視するのは一般的な管理者タスクなので、ポータルで定期的にリソースを確認して、クリーンアップがどのように進んでいるかを確認するだけです。
 
 #### <a name="review"></a>確認
 
