@@ -91,7 +91,7 @@ Azure portal を使用して、リソースのプロビジョニングとリソ�
    "osType": "[parameters('osType')]",
    ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: These parameters are removed since they are not applicable to the current deployment. In particular, sourceResourceId, sourceUri, osType, and hyperVGeneration parameters are applicable to creating an Azure disk from an existing VHD file.
+    >これらのパラメーターは、現在のデプロイメントに適用できないため、削除します。特に、sourceResourceId、sourceUri、osType、および hyperVGeneration パラメーターは、既存の VHD ファイルから Azure ディスクを作成する際に適用されます。
 
 1. 変更を **[保存]** します。
 
@@ -130,7 +130,7 @@ Azure portal を使用して、リソースのプロビジョニングとリソ�
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not delete resources you deployed in this lab. You will reference them in the next lab of this module.
+   >このラボでデプロイしたリソースは削除しないでください。このモジュールの次のラボでそれらを参照することになります。
 
 #### <a name="review"></a>確認
 
