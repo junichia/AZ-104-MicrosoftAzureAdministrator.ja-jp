@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-You need to evaluate the use of Azure storage for storing files residing currently in on-premises data stores. While majority of these files are not accessed frequently, there are some exceptions. You would like to minimize cost of storage by placing less frequently accessed files in lower-priced storage tiers. You also plan to explore different protection mechanisms that Azure Storage offers, including network access, authentication, authorization, and replication. Finally, you want to determine to what extent Azure Files service might be suitable for hosting your on-premises file shares.
+現在、オンプレミスのデータストアに存在するファイルを保存するために、Azureストレージの利用を評価する必要があります。これらのファイルの大部分は頻繁にアクセスされませんが、いくつかの例外もあります。アクセス頻度の低いファイルを低価格のストレージ階層に配置することで、ストレージのコストを最小化したいとお考えでしょう。また、ネットワークアクセス、認証、認可、およびレプリケーションなど、Azure Storageが提供するさまざまな保護メカニズムを調査する予定です。最後に、Azure Files サービスが、オンプレミスのファイル共有のホスティングにどの程度適しているかを判断したいとします。
 
 ## <a name="objectives"></a>目標
 
@@ -47,7 +47,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. Cloud Shell ウィンドウのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** を選択して、ファイル **\\Allfiles\\Labs\\07\\az104-07-vm-template.json** および **\\Allfiles\\Labs\\07\\az104-07-vm-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
 
-1. Edit the <bpt id="p1">**</bpt>Parameters<ept id="p1">**</ept> file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+    > アップロードした Parameters ファイルを編集し、パスワードを変更することもできます。シェルでファイルを編集するのに手助けが必要な場合は、インストラクターに尋ねてください。ベストプラクティスとして、パスワードのような秘密は、Key Vault により安全に保管する必要があります。
 
 1. [Cloud Shell] ウィンドウから次のコマンドを実行して、仮想マシンをホストするリソース グループを作成します ('[Azure_region]' プレースホルダーを Azure 仮想マシンをデプロイする Azure リージョンの名前に置き換えます)。
 
@@ -80,10 +80,10 @@ You need to evaluate the use of Azure storage for storing files residing current
 
     >**注**:VM サイズが利用できないというエラーが発生した場合、インストラクターにサポートを依頼し、次の手順を試してください。
     > 1. CloudShell で `{}` ボタンをクリックし、左側のバーから **az104-07-vm-parameters.json** を選択して、`vmSize` パラメーターの値をメモしておきます。
-    > 1. Check the location in which the 'az104-04-rg1' resource group is deployed. You can run <ph id="ph1">`az group show -n az104-04-rg1 --query location`</ph> in your CloudShell to get it.
+    > 1. **az104-04-rg1**リソースグループが配置されている場所を確認します。Cloud Shellで az group show -n az104-04-rg1 --query location を実行すると、取得することができます。
     > 1. CloudShell で `az vm list-skus --location <Replace with your location> -o table --query "[? contains(name,'Standard_D2s')].name"` を実行します。
     > 1. `vmSize` パラメーターの値を、先ほど実行したコマンドによって返された値のいずれかに置き換えます。
-    > 1. Now redeploy your templates by running the <ph id="ph1">`New-AzResourceGroupDeployment`</ph> command again. You can press the up button a few times which would bring the last executed command.
+    > 1. ここで再度 New-AzResourceGroupDeployment コマンドを実行して、テンプレートを再デプロイしてください。上ボタンを数回押すと、最後に実行したコマンドが表示されます。
 
 1. [Cloud Shell] ペインを閉じます。
 
@@ -110,7 +110,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. **[ストレージ アカウントの作成]** ブレードの **[データ保護]** タブで、利用可能なオプションを確認し、既定値を受け入れて、**[レビュー + 作成]** をクリックし、検証プロセスが完了するのを待ってから、**[作成]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Storage account to be created. This should take about 2 minutes.
+    >Storage アカウントが作成されるのを待ちます。2分くらいかかるはずです。
 
 1. [デプロイ] ブレードで、**[リソースに移動]** をクリックして、[Azure ストレージ アカウント] ブレードを表示します。
 
@@ -282,7 +282,7 @@ You need to evaluate the use of Azure storage for storing files residing current
 
 1. InPrivate モードを使用して別のブラウザー ウィンドウを開き、前のタスクで生成した BLOB SAS URL に移動します。
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you did not record the SAS URL from task 4, you should generate a new one with the same configuration. Use Task 4 steps 4-6 as a guide for generating a new blob SAS URL. 
+    > タスク4 の SAS URL を記録していない場合は、同じ構成で新しいSAS URLを生成する必要があります。タスク4のステップ4～6を、新しいBLOB SAS URLを生成するためのガイドとして使用します。
 
 1. **[MIT ライセンス (MIT)]** ページの内容が表示されます。
 
@@ -301,15 +301,15 @@ You need to evaluate the use of Azure storage for storing files residing current
    ```
 1. ダウンロードの試行が失敗したことを確認します。
 
-    > <bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You should receive the message stating <bpt id="p2">**</bpt>AuthorizationFailure: This request is not authorized to perform this operation<ept id="p2">**</ept>. This is expected, since you are connecting from the IP address assigned to an Azure VM hosting the Cloud Shell instance.
+    > AuthorizationFailureというメッセージが表示されるはずです。このリクエストは、この操作を実行する権限がないことを示しています。これは、Cloud ShellインスタンスをホストしているAzure VM に割り当てられた IP アドレスから接続しているため、予想されることです。
 
 1. [Cloud Shell] ペインを閉じます。
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> 新しく作成されたAzureリソースで、もう使用しないものは忘れずに削除してください。未使用のリソースを削除することで、予期せぬ請求が発生することはありません。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a long time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. You might also try to delete the Resource Group where the resources reside. That is a quick Administrator shortcut. If you have concerns speak to your instructor.
+> ラボのリソースがすぐに削除できなくても心配しないでください。リソースには依存関係があり、削除に時間がかかることがあります。リソースの使用状況を監視するのは一般的な管理者の仕事ですので、ポータルで定期的にリソースを確認し、クリーンアップがどのように進んでいるかを確認すればよいのです。また、リソースが存在するリソース・グループを削除してみるのもよいでしょう。これは、管理者のショートカットです。もし、心配なことがあれば、インストラクターに相談してください。
 
 1. Azure portal で、**[Cloud Shell]** ペイン内に **PowerShell** セッションを開きます。
 
