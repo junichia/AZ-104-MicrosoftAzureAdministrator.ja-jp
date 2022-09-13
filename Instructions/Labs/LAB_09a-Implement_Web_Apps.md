@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, hosted currently in the company's on-premises data centers. The web sites are running on Windows servers using PHP runtime stack. You also need to determine how you can implement DevOps practices by leveraging Azure web apps deployment slots.
+現在、オンプレミスのデータセンターでホストされている Contoso の Web サイトをホストするために Azure Web apps を使用することを評価する必要があります。Web サイトは、PHP ランタイムスタックを使用して Windows サーバーで実行されています。また、Azure Web Apps のデプロイメントスロットを活用して、どのように DevOps を実装できるかを判断する必要があります。
 
 ## <a name="objectives"></a>目標
 
@@ -53,9 +53,9 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
     | リージョン | Azure Web アプリをプロビジョニングできる Azure リージョンの名前 |
     | App Service プラン | 既定の構成を受け入れる |
 
-1. Click <bpt id="p1">**</bpt>Review + create<ept id="p1">**</ept>. On the <bpt id="p1">**</bpt>Review + create<ept id="p1">**</ept> tab of the <bpt id="p2">**</bpt>Create Web App<ept id="p2">**</ept> blade, ensure that the validation passed and click <bpt id="p3">**</bpt>Create<ept id="p3">**</ept>.
+1. **確認と作成** をクリックします。Web App の作成ブレードの [確認と作成] タブで、検証が通過したことを確認し、[作成] をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait until the web app is created before you proceed to the next task. This should take about a minute.
+    > Web アプリが作成されるまで待ってから、次のタスクに進みます。この作業には1分ほどかかります。
 
 1. デプロイ ブレードで **[リソースに移動]** をクリックします。
 
@@ -149,7 +149,7 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 1. ステージング スロットのブレードで **「概要」** 、 **「URL」** リンクの順にクリックして、新しいブラウザー タブで既定の Web ページを表示します。
 
-1. Verify that the browser page displays the <bpt id="p1">**</bpt>Hello World!<ept id="p1">**</ept> message and close the new tab.
+1. ブラウザページに「Hello World！」メッセージが表示されることを確認し、新しいタブを閉じます。
 
 #### <a name="task-5-swap-the-staging-slots"></a>タスク 5:ステージング スロットをスワップする
 
@@ -163,7 +163,7 @@ You need to evaluate the use of Azure Web apps for hosting Contoso's web sites, 
 
 1. Web アプリの運用スロット ブレードで **「概要」** をクリックしてから **「URL」** リンクをクリックして、新しいブラウザー タブに Web サイトのホーム ページを表示します。
 
-1. Verify the default web page has been replaced with the <bpt id="p1">**</bpt>Hello World!<ept id="p1">**</ept> page.
+1. デフォルトのWebページがHello World！ページに置き換えられていることを確認します。
 
 #### <a name="task-6-configure-and-test-autoscaling-of-the-azure-web-app"></a>タスク 6:Azure Web アプリの自動スケールを構成およびテストする
 
