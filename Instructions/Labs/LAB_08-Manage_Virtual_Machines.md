@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-You were tasked with identifying different options for deploying and configuring Azure virtual machines. First, you need to determine different compute and storage resiliency and scalability options you can implement when using Azure virtual machines. Next, you need to investigate compute and storage resiliency and scalability options that are available when using Azure virtual machine scale sets. You also want to explore the ability to automatically configure virtual machines and virtual machine scale sets by using the Azure Virtual Machine Custom Script extension.
+あなたは、Azure仮想マシンの展開と構成に関するさまざまなオプションを特定することを課されました。まず、Azure仮想マシンを使用する際に実装可能な、計算およびストレージの弾力性とスケーラビリティのさまざまなオプションを決定する必要があります。次に、Azure仮想マシンのスケールセットを使用する際に利用可能な、計算およびストレージの弾力性と拡張性のオプションについて調査する必要があります。また、Azure Virtual Machine Custom Script 拡張機能を使用して、仮想マシンおよび仮想マシンのスケールセットを自動的に構成する機能についても調査する必要があります。
 
 ## <a name="objectives"></a>目標
 
@@ -55,10 +55,10 @@ You were tasked with identifying different options for deploying and configuring
     | Image | **Windows Server 2019 Datacenter - Gen1/Gen2** |
     | Azure Spot インスタンス | **No** |
     | サイズ | **Standard D2s v3** |
-    | ユーザー名 | **学生** |
-    | パスワード | **セキュリティで保護されたパスワードを指定する** |
+    | ユーザー名 | **student** |
+    | パスワード | **Pa55w.rd1234** |
     | パブリック受信ポート | **なし** |
-    | 既存の Windows Server ライセンスを使用しますか? | **Unchecked** |
+    | 既存の Windows Server ライセンスを使用しますか? | **チェックなし** |
 
 1. **[次へ: ディスク >]** をクリックし、**[仮想マシンの作成]** ブレードの **[ディスク]** タブで、次の設定を指定します (他の設定は既定値のままにします)。
 
@@ -97,7 +97,7 @@ You were tasked with identifying different options for deploying and configuring
     | 診断ストレージ アカウント | 既定値を受け入れる |
     | パッチ オーケストレーション オプション | **手動更新** |  
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If necessary, select an existing storage account in the dropdown list or create a new storage account. Record the name of the storage account. You will use it in the next task.
+    > 必要に応じて、ドロップダウン リストで既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。ストレージ アカウントの名前を記録します。この名前は、次のタスクで使用します。
 
 1. **[次へ: 詳細 >]** をクリックし、**[仮想マシンの作成]** ブレードの **[詳細]** タブで、使用可能な設定を確認し、それらを変更せずに、**[確認と作成]** をクリックします。
 
@@ -118,8 +118,8 @@ You were tasked with identifying different options for deploying and configuring
     | パブリック IP アドレス名 | **az104-08-vm1-ip** |
     | 仮想マシン名、仮想マシン名 1、仮想マシン コンピューター名   | **az104-08-vm1** |
     | 仮想マシン RG | **az104-08-rg01** |    
-    | 管理ユーザー名 | **学生** |
-    | 管理パスワード | **セキュリティで保護されたパスワードを指定する**  |
+    | 管理ユーザー名 | **student** |
+    | 管理パスワード | **Pa55w.rd1234**  |
     | ホットパッチの有効化 | **false** |
     | ゾーン | **2** |
 
@@ -127,7 +127,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **[レビューと作成]** をクリックし、**[レビューと作成]** ブレードで **[作成]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for both deployments to complete before you proceed to the next task. This might take about 5 minutes.
+    > 次のタスクに進む前に、両方のデプロイメントが完了するのを待ちます。これには5分ほどかかる場合があります。
 
 #### <a name="task-2-configure-azure-virtual-machines-by-using-virtual-machine-extensions"></a>タスク 2:仮想マシンの拡張機能を使用して、Azure Virtual Machines を構成する
 
@@ -170,11 +170,11 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **[カスタム デプロイ]** ブレードで、**[テンプレートの編集]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Disregard the message stating <bpt id="p2">**</bpt>The resource group is in a location that is not supported by one or more resources in the template. Please choose a different resource group<ept id="p2">**</ept>. This is expected and can be ignored in this case.
+    > **The resource group is in a location that is not supported by one or more resources in the template.** というメッセージは無視します。別のリソースグループを選択してください。これは予想されることであり、この場合は無視してかまいません。
 
 1. **[テンプレートの編集]** ブレードで、テンプレートの内容が表示されているセクションの **20** 行目 (`"resources": [` 行のすぐ下) に次のコードを挿入します。
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If you are using a tool that pastes the code in line by line intellisense may add extra brackets causing validation errors. You may want to paste the code into notepad first and then paste it into line 20.
+   > 行ごとにコードを貼り付けるツールを使用している場合、インテリセンスが余分なブラケットを追加して、検証エラーを引き起こす可能性があります。まずメモ帳にコードを貼り付けてから、20行目に貼り付けるとよいでしょう。
 
    ```json
         {
@@ -363,9 +363,9 @@ You were tasked with identifying different options for deploying and configuring
     | Image | **Windows Server 2019 Datacenter - Gen2** |
     | Azure Spot インスタンス | **No** |
     | サイズ | **Standard D2s_v3** |
-    | ユーザー名 | **学生** |
-    | パスワード | **セキュリティで保護されたパスワードを指定する**  |
-    | Windows Server ライセンスを既にお持ちの場合 | **Unchecked** |
+    | ユーザー名 | **student** |
+    | パスワード | **Pa55w.rd1234**  |
+    | Windows Server ライセンスを既にお持ちの場合 | **チェックなし** |
 
     >**注**: Windows 仮想マシンの可用性ゾーンへのデプロイをサポートする Azure リージョンのリストについては、[Azure の Availability Zones の概要](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview)に関するページを参照してください。
 
@@ -447,7 +447,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. **[仮想マシン スケール セットの作成]** ブレードの **[レビューと作成]** タブで、検証が成功したことを確認し、**[作成]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the virtual machine scale set deployment to complete. This should take about 5 minutes.
+    > 仮想マシンのスケールセットのデプロイが完了するのを待ちます。5分程度かかるはずです。
 
 #### <a name="task-6-configure-azure-virtual-machine-scale-sets-by-using-virtual-machine-extensions"></a>タスク 6:仮想マシン拡張機能を使用して、Azure 仮想マシン スケール セットを構成する
 
@@ -580,7 +580,7 @@ You were tasked with identifying different options for deploying and configuring
 
 1. 変更を保存して、**[az10408vmss0]** ブレードの **[設定]** セクションで **[インスタンス]** をクリックし、仮想マシン スケール セットの 2 のインスタンスの横にあるチェックボックスをオンにし、**[アップグレード]** をクリックして、確認を求められたら、**[はい]** を選択します。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The disk attached in the previous step is a raw disk. Before it can be used, it is necessary to create a partition, create a filesystem, and mount it. To accomplish this, you will use Azure virtual machine Custom Script extension. First, you will need to remove the existing Custom Script Extension.
+    > 前のステップで接続されたディスクは、ローディスクです。これを使用する前に、パーティションの作成、ファイルシステムの作成、マウントを行う必要があります。これを実現するために、Azure 仮想マシン カスタム スクリプト拡張機能を使用します。まず、既存の Custom Script Extension を削除する必要があります。
 
 1. **[az10408vmss0]** ブレードの **[設定]** セクションで、**[拡張機能]** をクリックし、**[CustomScriptExtension]** をクリックし、**[アンインストール]** をクリックします。
 
@@ -614,9 +614,10 @@ You were tasked with identifying different options for deploying and configuring
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> 新しく作成されたAzureリソースで、もう使用しないものは忘れずに削除してください。未使用のリソースを削除することで、予期せぬ請求が発生することはありません。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+> ラボのリソースがすぐに削除できなくても心配しないでください。リソースには依存関係があり、削除に時間がかかることがあります。リソースの使用状況を監視するのは一般的な管理者の作業なので、ポータルで定期的にリソースを確認して、クリーンアップがどのように進んでいるかを確認すればよいのです。
+
 1. Azure portal で、**[Cloud Shell]** ペイン内に **PowerShell** セッションを開きます。
 
 1. 次のコマンドを実行して az104-08-configure_VMSS_disks.ps1 を削除します。
