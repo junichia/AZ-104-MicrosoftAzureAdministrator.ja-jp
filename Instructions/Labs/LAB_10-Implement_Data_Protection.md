@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
-You have been tasked with evaluating the use of Azure Recovery Services for backup and restore of files hosted on Azure virtual machines and on-premises computers. In addition, you want to identify methods of protecting data stored in the Recovery Services vault from accidental or malicious data loss.
+あなたは、Azure仮想マシンやオンプレミスコンピュータ上でホストされているファイルのバックアップとリストアのためのAzure Recovery Servicesの使用を評価することを課せられました。さらに、Recovery Servicesのデータ保管庫に保存されたデータを、偶発的または悪意のあるデータ損失から保護する方法を特定したいと思います。
 
 ## <a name="objectives"></a>目標
 
@@ -43,12 +43,12 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. Cloud Shell ペインのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** をクリックして、ファイル **\\Allfiles\\Labs\\10\\az104-10-vms-edge-template.json** と **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
 
-1. Edit the Parameters file you just uploaded and change the password. If you need help editing the file in the Shell please ask your instructor for assistance. As a best practice, secrets, like passwords, should be more securely stored in the Key Vault. 
+1. 先ほどアップロードした Parameters ファイルを編集し、パスワードを変更します。シェルでファイルを編集するのに手助けが必要な場合は、インストラクターに尋ねてください。ベストプラクティスとして、パスワードのような秘密は、鍵の保管庫により安全に保管されるべきです。
 
-1. From the Cloud Shell pane, run the following to create the resource group that will be hosting the virtual machines (replace the <ph id="ph1">`[Azure_region]`</ph> placeholder with the name of an Azure region where you intend to deploy Azure virtual machines). Type each command line separately and execute them separately:
+1. Cloud Shellペインから以下を実行し、仮想マシンをホストするリソースグループを作成します。各コマンドラインは別々に入力し、別々に実行します。
 
    ```powershell
-   $location = '[Azure_region]'
+   $location = 'East US'
     ```
     
    ```powershell
@@ -71,7 +71,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. Cloud Shell を最小化します (ただし、閉じないでください)。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but instead proceed to the next task. The deployment should take about 5 minutes.
+    > デプロイが完了するのを待たずに、次のタスクに進みます。デプロイが完了するのを待たずに、次のタスクに進みます。
 
 #### <a name="task-2-create-a-recovery-services-vault"></a>タスク 2:Recovery Services コンテナーを作成する
 
@@ -92,7 +92,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **[確認および作成]** をクリックし、検証が成功したことを確認して、**[作成]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. The deployment should take less than 1 minute.
+    > デプロイが完了するのを待ちます。デプロイメントにかかる時間は1分未満です。
 
 1. デプロイが完了したら、**[リソースに移動]** をクリックします。
 
@@ -161,7 +161,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-vm1** ブレードで、 **[接続]** をクリックし、ドロップダウン メニューで **[RDP]** をクリックし、 **[RDP を使用して接続する]** ブレードで **[RDP ファイルのダウンロード]** をクリックし、プロンプトに従ってリモート デスクトップ セッションを開始します。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    > この手順は、Windowsコンピュータからリモートデスクトップを使用して接続する場合です。Macの場合は、Mac App StoreからRemote Desktop Clientを、Linuxコンピュータの場合は、オープンソースのRDPクライアントソフトウェアを使用することができます。
 
     >**注**:ターゲット仮想マシンに接続する際は、警告メッセージを無視できます。
 
@@ -192,11 +192,11 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
     >**注**: **Microsoft Azure Recovery Services Agent セットアップ ウィザード**の **[Microsoft Update のオプトイン]** ページで、**[Microsoft Update を使用しない]** インストール オプションを選択します。
 
-1. On the <bpt id="p1">**</bpt>Installation<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Microsoft Azure Recovery Services Agent Setup Wizard<ept id="p2">**</ept>, click <bpt id="p3">**</bpt>Proceed to Registration<ept id="p3">**</ept>. This will start <bpt id="p1">**</bpt>Register Server Wizard<ept id="p1">**</ept>.
+1. Microsoft Azure Recovery Services Agent Setup Wizard の Installation ページで、Proceed to Registrationをクリックします。これにより、サーバーの登録ウィザードが開始されます。
 
 1. Azure portal を表示している Web ブラザー ウィンドウに切り替え、**[インフラストラクチャの準備]** ウィンドウで、**[最新の Recovery Server Agent を既にダウンロードしたか、使用している]** チェックボックスをオンにして、**[ダウンロード]** をクリックします。
 
-1. When prompted, whether to open or save the vault credentials file, click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept>. This will save the vault credentials file to the local Downloads folder.
+1. データ保管庫の資格情報ファイルを開くか保存するかを尋ねられたら、保存 をクリックします。これにより、データ保管庫の認証情報ファイルがローカルのダウンロードフォルダーに保存されます。
 
 1. **[サーバーの登録ウィザード]** ウィンドウに戻り、**[コンテナー ID]** ページで、**[参照]** をクリックします。
 
@@ -214,7 +214,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
     >**注**:運用環境では、バックアップするサーバー以外の安全な場所にパスフレーズ ファイルを保存する必要があります。
 
-1. On the <bpt id="p1">**</bpt>Server Registration<ept id="p1">**</ept> page of the <bpt id="p2">**</bpt>Register Server Wizard<ept id="p2">**</ept>, review the warning regarding the location of the passphrase file, ensure that the <bpt id="p3">**</bpt>Launch Microsoft Azure Recovery Services Agent<ept id="p3">**</ept> checkbox is selected and click <bpt id="p4">**</bpt>Close<ept id="p4">**</ept>. This will automatically open the <bpt id="p1">**</bpt>Microsoft Azure Backup<ept id="p1">**</ept> console.
+1. サーバーの登録ウィザードのサーバー登録ページで、パスフレーズ ファイルの場所に関する警告を確認し、Microsoft Azure Recovery Services Agent の起動 チェックボックスが選択されていることを確認し、閉じる をクリックします。これにより、Microsoft Azure Backup コンソールが自動的に開きます。
 
 1. **Microsoft Azure Backup** コンソールの **[操作]** ペインで、**[バックアップのスケジュール]** をクリックします。
 
@@ -232,7 +232,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **[初期バックアップの種類の選択]** ページで、既定値をそのまま使用し、**[次へ]** をクリックします。
 
-1. On the <bpt id="p1">**</bpt>Confirmation<ept id="p1">**</ept> page, click <bpt id="p2">**</bpt>Finish<ept id="p2">**</ept>. When the backup schedule is created, click <bpt id="p1">**</bpt>Close<ept id="p1">**</ept>.
+1. 確認ページで、[終了]をクリックします。バックアップのスケジュールが作成されたら、[閉じる]をクリックします。
 
 1. **Microsoft Azure Backup** コンソールの [操作] ペインで、**[今すぐバックアップ]** をクリックします。
 
@@ -258,7 +258,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **az104-10-vm1** へのリモート デスクトップ セッション内で、ファイル エクスプローラーを開き、**C:\\Windows\\System32\\drivers\\etc\\** フォルダーに移動し、**hosts** ファイルを削除します。
 
-1. Open Microsoft Azure Backup and click <bpt id="p1">**</bpt>Recover data<ept id="p1">**</ept> in the <bpt id="p2">**</bpt>Actions<ept id="p2">**</ept> pane. This will start <bpt id="p1">**</bpt>Recover Data Wizard<ept id="p1">**</ept>.
+1. Microsoft Azure Backup を開き、[アクション]ペインで [データの回復]をクリックします。これにより、データの回復ウィザードが起動します。
 
 1. **データ回復ウィザード**の **[はじめに]** ページで、**[このサーバー (az104-10-vm1.)]** オプションが選択されていることを確認して、**[次へ]** をクリックします。
 
@@ -266,7 +266,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **[ボリュームと日付の選択]** ページの **[ボリュームの選択]** ドロップダウン リストで、**C:\\** を選択し、使用可能なバックアップの既定の選択をそのまま使用し、 **[マウント]** をクリックします。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the mount operation to complete. This might take about 2 minutes.
+    > マウント操作が完了するのを待ちます。2分ほどかかる場合があります。
 
 1. **[File の参照と回復]** ページで、回復ボリュームのドライブ文字を記録し、robocopy の使用に関するヒントを確認します。
 
@@ -292,7 +292,7 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 1. **[az104-10-vm0]** ブレードで、 **[接続]** をクリックし、ドロップダウン メニューで **[RDP]** をクリックし、 **[RDP を使用して接続する]** ブレードで **[RDP ファイルのダウンロード]** をクリックし、プロンプトに従ってリモート デスクトップ セッションを開始します。
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This step refers to connecting via Remote Desktop from a Windows computer. On a Mac, you can use Remote Desktop Client from the Mac App Store and on Linux computers you can use an open source RDP client software.
+    > この手順は、Windowsコンピュータからリモートデスクトップを使用して接続する場合です。Macでは、Mac App StoreのRemote Desktop Clientを、Linuxコンピューターでは、オープンソースのRDPクライアントソフトウェアを使用することができます。
 
     >**注**:ターゲット仮想マシンに接続する際は、警告メッセージを無視できます。
 
@@ -438,9 +438,9 @@ You have been tasked with evaluating the use of Azure Recovery Services for back
 
 #### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not see unexpected charges.
+> 新しく作成されたAzureリソースで、もう使用しないものは忘れずに削除してください。未使用のリソースを削除することで、予期しない請求が発生することはありません。
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Don't worry if the lab resources cannot be immediately removed. Sometimes resources have dependencies and take a longer time to delete. It is a common Administrator task to monitor resource usage, so just periodically review your resources in the Portal to see how the cleanup is going. 
+> ラボのリソースがすぐに削除できなくても心配しないでください。リソースに依存関係があり、削除に時間がかかる場合もあります。リソースの使用状況を監視するのは一般的な管理者の作業なので、ポータルで定期的にリソースを確認して、クリーンアップがどのように進んでいるかを確認すればよいのです。
 
 1. Azure portal で、**[Cloud Shell]** ペイン内に **PowerShell** セッションを開きます。
 
