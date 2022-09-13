@@ -50,7 +50,7 @@ Azure portal を使用して、リソースのプロビジョニングとリソ�
 
 1. **[Microsoft.ManagedDisk-* XXXXXXXXX* \| テンプレート]* * ブレードで、 **[入力]** をクリックします。
 
-1. Note the value of the <bpt id="p1">**</bpt>location<ept id="p1">**</ept> parameter. You will need it in the next task.
+1. locationパラメータの値に注意してください。これは次のタスクで必要になります。
 
 1. ダウンロードしたファイルの内容をラボ コンピューターの **Downloads** フォルダーに抽出します。
 
