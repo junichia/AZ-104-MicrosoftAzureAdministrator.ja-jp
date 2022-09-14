@@ -51,7 +51,7 @@ lab:
 
 > 先ほどアップロードしたParametersファイルを編集し、パスワードを変更します。Cloud Shell でのファイル編集にヘルプが必要な場合は、インストラクターに相談してください。ベストプラクティスとして、パスワードのような秘密は、Key Vaultにより安全に保管されるべきです。
 
-1. [Cloud Shell] ペインから次を実行して、ラボ環境をホストする最初のリソース グループを作成します (`[Azure_region]` プレースホルダーを、Azure Virtual Machines をデプロイする Azure リージョンの名前に置き換えます)("(Get-AzLocation).Location" コマンドレットを使用して、リージョン一覧を取得できます)。
+1. [Cloud Shell] ペインから次を実行して、ラボ環境をホストする最初のリソース グループを作成します (`[Azure_region]` プレースホルダーを、Azure Virtual Machines をデプロイする Azure リージョンの名前に置き換えます)("(Get-AzLocation).Location" コマンドレットを使用して、リージョン一覧を取得できます)。East US をお勧めします。
 
     ```powershell 
     $location = '[Azure_region]'
