@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-requirements"></a>ラボの要件
 
-This lab requires permissions to create Azure Active Directory (Azure AD) users, create custom Azure Role Based Access Control (RBAC) roles, and assign these roles to Azure AD users. Not all lab hosters may provide this capability. Ask your instructor for the availability of this lab.
+管理グループブレードの上部に表示されるメッセージを確認します。「You are registered as a directory admin but do not have the permissions to access the root management group」というメッセージが表示されている場合は、次の一連の手順を実行してください。
 
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
