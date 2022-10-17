@@ -147,15 +147,15 @@ Contoso の Azure リソースの管理を強化するために、次の機能�
 
 1. Azure portal の **[InPrivate]** ブラウザー ウィンドウで、**[すべてのリソース]** を検索して選択し、az104-02-aaduser1 ユーザーにリソースを表示できないことを確認します。
 
-1. Azure portal の **[InPrivate]** ブラウザー ウィンドウで、**[ヘルプとサポート]** を検索して選択し、**[サポート要求の作成]** をクリックします。 
+1. Azure portal の **[InPrivate]** ブラウザー ウィンドウで、**[ヘルプとサポート]** を検索して選択し、**[サポートリクエストの作成]** をクリックします。 
 
-1. In the <bpt id="p1">**</bpt>InPrivate<ept id="p1">**</ept> browser window, on the <bpt id="p2">**</bpt>Problem Desription/Summary<ept id="p2">**</ept> tab of the <bpt id="p3">**</bpt>Help + support - New support request<ept id="p3">**</ept> blade, type <bpt id="p4">**</bpt>Service and subscription limits<ept id="p4">**</ept> in the Summary field and select the <bpt id="p5">**</bpt>Service and subscription limits (quotas)<ept id="p5">**</ept> issue type. Note that the subscription you are using in this lab is listed in the <bpt id="p1">**</bpt>Subscription<ept id="p1">**</ept> drop-down list.
+1. 新しいサポートリクエスト の画面で、**問題の種類** として **サービスとサブスクリプションの制限** を選択します。このラボで使用しているサブスクリプションが[Subscription]ドロップダウン リストに表示されていることに注意してください。
 
     >**注**: このラボで使用しているサブスクリプションが **[サブスクリプション]** ドロップダウン リストに表示されている場合、使用しているアカウントに、サブスクリプション固有のサポート要求を作成するために必要なアクセス許可があることを示しています。
 
     >**注**: **[サービスとサブスクリプションの制限 (クォータ)]** オプションが表示されない場合は、Azure portal からサインアウトしてログインし直します。
 
-1. Do not continue with creating the support request. Instead, sign out as the az104-02-aaduser1 user from the Azure portal and close the InPrivate browser window.
+1. サポート リクエストの作成は続けないでください。代わりに、Azure ポータルから az104-02-aaduser1 ユーザーとしてサインアウトし、InPrivate ブラウザー ウィンドウを閉じます。
 
 #### <a name="task-4-clean-up-resources"></a>タスク 4: リソースをクリーンアップする
 
