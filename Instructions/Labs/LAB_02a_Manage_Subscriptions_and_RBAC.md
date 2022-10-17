@@ -9,8 +9,6 @@ lab:
 
 ## <a name="lab-requirements"></a>ラボの要件
 
-管理グループブレードの上部に表示されるメッセージを確認します。「You are registered as a directory admin but do not have the permissions to access the root management group」というメッセージが表示されている場合は、次の一連の手順を実行してください。
-
 ## <a name="lab-scenario"></a>ラボのシナリオ
 
 Contoso の Azure リソースの管理を強化するために、次の機能を実装する任務を負いました。
@@ -50,7 +48,7 @@ Contoso の Azure リソースの管理を強化するために、次の機能�
 
 1. 「**管理グループ**」を検索して選択し、**[管理グループ]** ブレードに移動します。
 
-1. Review the messages at the top of the <bpt id="p1">**</bpt>Management groups<ept id="p1">**</ept> blade. If you are seeing the message stating <bpt id="p1">**</bpt>You are registered as a directory admin but do not have the necessary permissions to access the root management group<ept id="p1">**</ept>, perfom the following sequence of steps:
+1. 管理グループブレードの上部に表示されるメッセージを確認します。「You are registered as a directory admin but do not have the permissions to access the root management group」というメッセージが表示されている場合は、次の一連の手順を実行してください。
 
     1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
     
