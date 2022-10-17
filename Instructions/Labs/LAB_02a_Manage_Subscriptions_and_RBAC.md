@@ -81,7 +81,7 @@ Contoso の Azure リソースの管理を強化するために、次の機能�
 
 このタスクでは、カスタム RBAC ロールの定義を作成します。
 
-1. ラボのコンピューターから **\\Allfiles\\Labs\\02\\az104-02a-customRoleDefinition.json** ファイルをメモ帳で開き、その内容を確認します。
+1. ラボのコンピューターから **[\\Allfiles\\Labs\\02\\az104-02a-customRoleDefinition.json](https://github.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/tree/main/Allfiles/Labs/02)** ファイルをメモ帳で開き、その内容を確認します。
 
    ```json
    {
