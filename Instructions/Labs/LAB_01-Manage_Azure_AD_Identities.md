@@ -72,7 +72,7 @@ In order to allow Contoso users to authenticate by using Azure AD, you have been
 
     >**注**:新しいユーザーをプロビジョニングするときに、Azure AD の役割を割り当てるオプションもあります。
 
-1. Open an <bpt id="p1">**</bpt>InPrivate<ept id="p1">**</ept> browser window and sign in to the <bpt id="p2">[</bpt>Azure portal<ept id="p2">](https://portal.azure.com)</ept> using the newly created user account. When prompted to update the password, change the password to a secure password of your choosing. 
+1. InPrivate ブラウザー ウィンドウを開き、新しく作成したユーザー アカウントを使用して Azure ポータルにサインインします。パスワードの更新を求められたら、パスワードを任意の安全なパスワードに変更します。
 
     >**注**:ユーザー名 (ドメイン名を含む) を入力するのではなく、クリップボードの内容を貼り付けることができます。
 
