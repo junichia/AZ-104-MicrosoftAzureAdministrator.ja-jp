@@ -54,7 +54,7 @@ Azure portal を使用して、リソースのプロビジョニングとリソ�
 
 1. ダウンロードしたファイルの内容をラボ コンピューターの **Downloads** フォルダーに抽出します。
 
-    >**注**:これらのファイルは、 **\\Allfiles\\Labs\\03\\az104-03b-md-template.json** および **\\Allfiles\\Labs\\03\\az104-03b-md-parameters.json** でも入手可能です。
+    >**注**:これらのファイルは、 **[\\Allfiles\\Labs\\03\\az104-03b-md-template.json](https://raw.githubusercontent.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/main/Allfiles/Labs/03/az104-03b-md-template.json)** および **[\\Allfiles\\Labs\\03\\az104-03b-md-parameters.json](https://raw.githubusercontent.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/main/Allfiles/Labs/03/az104-03b-md-parameters.json)** でも入手可能です。
     
 1. すべての**ファイル エクスプローラー**ウィンドウを閉じます。
 
