@@ -139,7 +139,7 @@ lab:
 
 1. コンテナーの一覧で **[az104-07-container]** をクリックし、**[アップロード]** をクリックします。
 
-1. ラボ コンピューターで **\\Allfiles\\Labs\\07\\LICENSE** を参照し、 **[開く]** をクリックします。
+1. ラボ コンピューターで **[\\Allfiles\\Labs\\07\\LICENSE](https://github.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/blob/main/Allfiles/Labs/07/LICENSE)** を参照し、 **[開く]** をクリックします。
 
 1. **[BLOB のアップロード]** ブレードで、**[詳細]** セクションを展開し、次の設定を指定します (その他の設定は既定値のままにします)。
 
