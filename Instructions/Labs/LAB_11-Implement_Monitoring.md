@@ -38,6 +38,8 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
 
 このタスクでは、監視シナリオのテストに使用する仮想マシンをデプロイします。
 
+1. https://github.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/tree/main/Allfiles/Labs/11 から az104-11-vm-template.json と az104-11-vm-parameters.json をダウンロードします。
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal の右上にあるアイコンをクリックして **Azure Cloud Shell** を開きます。
@@ -46,7 +48,7 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
 
     >**注**: **Cloud Shell** の初回起動時に **"ストレージがマウントされていません"** というメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、**[ストレージの作成]** を選択します。
 
-1. Cloud Shell ウィンドウのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** を選択して、ファイル **\\Allfiles\\Labs\\11\\az104-11-vm-template.json** および **\\Allfiles\\Labs\\11\\az104-11-vm-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
+1. Cloud Shell ウィンドウのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** を選択して、ファイル **az104-11-vm-template.json** および **az104-11-vm-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
 
     > アップロードしたばかりのパラメーター ファイルを編集し、パスワードを変更することもできます。 シェルでのファイルの編集に関してヘルプが必要な場合は、インストラクターに相談してください。 ベスト プラクティスとして、パスワードなどのシークレットは、キー コンテナーに安全に保存する必要があります。 
 
@@ -55,7 +57,7 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
     >**注**:**ワークスペース マッピングのドキュメント** で参照されている [Log Analytics ワークスペースリージョン](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)としてリストされているリージョンのいずれかを選択してください
 
    ```powershell
-   $location = '[Azure_region]'
+   $location = 'East US'
 
    $rgName = 'az104-11-rg0'
 
@@ -99,7 +101,7 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
     | サブスクリプション | このラボで使用している Azure サブスクリプションの名前 |
     | リソース グループ | 新しいリソース グループ **az104-11-rg1** の名前 |
     | Log Analytics ワークスペース | 任意の一意の名前 |
-    | リージョン | 前のタスクで仮想マシンをデプロイした Azure リージョンの名前 |
+    | リージョン | East US |
 
     >**注**: 前のタスクで仮想マシンをデプロイしたリージョンを必ず指定してください。
 
@@ -114,7 +116,7 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
     | Automation アカウント名 | 任意の一意の名前 |
     | サブスクリプション | このラボで使用している Azure サブスクリプションの名前 |
     | リソース グループ | **az104-11-rg1** |
-    | リージョン | [ワークスペース マッピングに関するドキュメント](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)に基づいて決定された Azure リージョンの名前 |
+    | リージョン | [ワークスペース マッピングに関するドキュメント](https://docs.microsoft.com/ja-jp/azure/automation/how-to/region-mappings)に基づいて決定された Azure リージョンの名前 |
 
     >**注**:[ワークスペース マッピングのドキュメント](https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings)に基づいて Azure リージョンを指定していることを確認します。
 
@@ -190,7 +192,7 @@ Azure リソースのパフォーマンスと構成に関する分析情報を�
 
 #### <a name="task-6-review-azure-monitor-functionality"></a>タスク 6:Azure Monitor の機能をレビューする
 
-1. Azure portal で、 **[モニター]** を検索して選択し、 **[モニター \| 概要]** ブレードで、 **[メトリック]** をクリックします。
+1. Azure portal で、 **[モニター]** を検索して選択し、 **[モニター | 概要]** ブレードで、 **[メトリック]** をクリックします。
 
 1. **[スコープの選択]** ブレードの **[参照]** タブで **az104-11-rg0** リソース グループに移動してそれを展開し、そのリソース グループ内にある **az104-11-vm0** 仮想マシンの横にあるチェックボックスを選択し、**[適用]** をクリックします。
 
