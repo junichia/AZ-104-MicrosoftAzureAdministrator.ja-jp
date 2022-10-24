@@ -33,6 +33,8 @@ lab:
 
 このタスクでは、異なるバックアップ シナリオをテストするために使用する 2 つの仮想マシンをデプロイします。
 
+1. https://github.com/junichia/AZ-104-MicrosoftAzureAdministrator.ja-jp/tree/main/Allfiles/Labs/10 から az104-10-vms-edge-template.json と az104-10-vms-edge-parameters.json をダウンロードします。
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal の右上にあるアイコンをクリックして **Azure Cloud Shell** を開きます。
@@ -41,7 +43,7 @@ lab:
 
     >**注**: **Cloud Shell** の初回起動時に "**ストレージがマウントされていません**" というメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、**[ストレージの作成]** を選択します。
 
-1. Cloud Shell ペインのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** をクリックして、ファイル **\\Allfiles\\Labs\\10\\az104-10-vms-edge-template.json** と **\\Allfiles\\Labs\\10\\az104-10-vms-edge-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
+1. Cloud Shell ペインのツールバーで、 **[ファイルのアップロード/ダウンロード]** アイコンをクリックし、ドロップダウン メニューで **[アップロード]** をクリックして、ファイル **az104-10-vms-edge-template.json** と **az104-10-vms-edge-parameters.json** を Cloud Shell ホーム ディレクトリにアップロードします。
 
 1. 先ほどアップロードした Parameters ファイルを編集し、パスワードを変更します。シェルでファイルを編集するのに手助けが必要な場合は、インストラクターに尋ねてください。ベストプラクティスとして、パスワードのような秘密は、鍵の保管庫により安全に保管されるべきです。
 
